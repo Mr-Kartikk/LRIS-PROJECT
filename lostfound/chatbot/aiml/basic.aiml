@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="1.0.1" encoding="UTF-8">
+    <category>
+        <pattern>HI</pattern>
+        <template>Hello! I am your AIML assistant. How can I help you today?</template>
+    </category>
+
+    <category>
+        <pattern>HELLO</pattern>
+        <template>Hi there! Ask me about lost and found items or the project.</template>
+    </category>
+
+    <category>
+        <pattern>HOW ARE YOU</pattern>
+        <template>I'm a chatbot, so I am always ready to respond.</template>
+    </category>
+
+    <category>
+        <pattern>WHAT IS YOUR NAME</pattern>
+        <template>My name is LostFound AIML Assistant.</template>
+    </category>
+
+    <category>
+        <pattern>THANK YOU</pattern>
+        <template>You are welcome!</template>
+    </category>
+
+    <category>
+        <pattern>BYE</pattern>
+        <template>Goodbye! If you need anything else, just ask.</template>
+    </category>
+
+    <category>
+        <pattern>I LOST MY ITEM</pattern>
+        <template>I'm sorry to hear that. Describe the item and where you lost it, and I can help you log it.</template>
+    </category>
+
+    <category>
+        <pattern>I FOUND AN ITEM</pattern>
+        <template>Great! Please tell me what you found and where, and I will help you add it to the system.</template>
+    </category>
+
+    <category>
+        <pattern>WHAT CAN YOU DO</pattern>
+        <template>I can answer simple questions and help with lost and found item workflows.</template>
+    </category>
+</aiml>
