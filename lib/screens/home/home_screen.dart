@@ -6,7 +6,7 @@ import 'package:lris/screens/notifications/notification_screen.dart';
 import 'package:lris/screens/items/potential_matches_screen.dart';
 import 'package:lris/screens/claims/claims_on_my_items_screen.dart'; // ADD THIS IMPORT
 import 'package:lris/profile/profile_screen.dart';
-import 'package:lris/providers/item_provider.dart';
+import 'package:lris/providers/Item_provider.dart';
 import 'package:lris/screens/items/lost_items_screen.dart';
 import 'package:lris/screens/items/found_items_screen.dart';
 import 'package:lris/screens/items/add_lost_item.dart';

@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:lris/providers/notification_provider.dart';
 import 'package:lris/screens/notifications/notification_screen.dart';
 import 'package:lris/providers/auth_provider.dart';
-import 'package:lris/providers/item_provider.dart';
+import 'package:lris/providers/Item_provider.dart';
 import 'package:lris/screens/splash_screen.dart';
 import 'package:lris/screens/auth/login_screen.dart';
 import 'package:lris/screens/auth/register_screen.dart';

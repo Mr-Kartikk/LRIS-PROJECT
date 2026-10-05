@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:lris/models/found_item.dart';
-import 'package:lris/providers/item_provider.dart';
+import 'package:lris/providers/Item_provider.dart';
 import 'package:lris/providers/auth_provider.dart';
 import 'package:lris/widgets/item_card.dart';
 import 'package:lris/widgets/loading_shimmer.dart';

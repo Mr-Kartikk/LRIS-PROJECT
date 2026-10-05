@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:lris/providers/item_provider.dart';
+import 'package:lris/providers/Item_provider.dart';
 import 'package:lris/screens/items/item_detail.dart';
 
 class PotentialMatchesScreen extends StatefulWidget {

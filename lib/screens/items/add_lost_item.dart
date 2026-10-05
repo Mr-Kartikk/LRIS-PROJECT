@@ -3,7 +3,7 @@ import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:provider/provider.dart';
-import 'package:lris/providers/item_provider.dart';
+import 'package:lris/providers/Item_provider.dart';
 import 'package:lris/utils/helpers.dart';
 import 'package:lris/widgets/custom_textfield.dart';
 import 'package:lris/widgets/custom_button.dart';

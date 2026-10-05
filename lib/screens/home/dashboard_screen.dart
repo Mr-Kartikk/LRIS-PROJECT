@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:lris/providers/auth_provider.dart';
-import 'package:lris/providers/item_provider.dart';
+import 'package:lris/providers/Item_provider.dart';
 import 'package:lris/screens/items/add_lost_item.dart';
 import 'package:lris/screens/items/add_found_item.dart';
 import 'package:lris/screens/items/lost_items_screen.dart';
