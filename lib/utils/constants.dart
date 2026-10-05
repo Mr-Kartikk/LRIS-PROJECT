@@ -4,7 +4,7 @@ class AppConstants {
   static const int apiTimeout = 30000;
 
   // App Constants
-  static const String appName = 'Lost & Found';
+  static const String appName = 'LIRS';
   static const String appVersion = '1.0.0';
 
   // Shared Preferences Keys

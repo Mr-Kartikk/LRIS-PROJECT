@@ -73,7 +73,7 @@ class _SplashScreenState extends State<SplashScreen> {
               SizedBox(height: 30),
 
               Text(
-                'Lost & Found',
+                'LIRS',
                 style: TextStyle(
                   fontSize: 32,
                   fontWeight: FontWeight.bold,

@@ -164,7 +164,7 @@ CORS_ALLOW_HEADERS = [
 ]
 
 REST_FRAMEWORK = {
-    'EXCEPTION_HANDLER': 'lostfound.exceptions.custom_exception_handler',
+    'EXCEPTION_HANDLER': 'exceptions.custom_exception_handler',
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.TokenAuthentication',
         'rest_framework.authentication.SessionAuthentication',

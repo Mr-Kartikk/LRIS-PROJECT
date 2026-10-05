@@ -33,7 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
   ];
 
   final List<String> _appBarTitles = [
-    'Lost & Found',
+    'LIRS',
     'Lost Items',
     'Found Items',
     'My Items',
@@ -132,7 +132,55 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(_appBarTitles[_selectedIndex]),
+        centerTitle: _selectedIndex != 0,
+        titleSpacing: _selectedIndex == 0 ? 20 : null,
+        backgroundColor: _selectedIndex == 0
+            ? const Color(0xFFF6F8F5)
+            : Colors.white,
+        title: _selectedIndex == 0
+            ? Row(
+                children: [
+                  Container(
+                    width: 36,
+                    height: 36,
+                    decoration: BoxDecoration(
+                      color: const Color(0xFFE4F3EC),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: const Icon(
+                      Icons.volunteer_activism_rounded,
+                      color: Color(0xFF176B57),
+                      size: 20,
+                    ),
+                  ),
+                  const SizedBox(width: 10),
+                  const Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        'LIRS',
+                        style: TextStyle(
+                          color: Color(0xFF193C36),
+                          fontSize: 16,
+                          fontWeight: FontWeight.w800,
+                          letterSpacing: 1,
+                        ),
+                      ),
+                      Text(
+                        'LOST & FOUND',
+                        style: TextStyle(
+                          color: Color(0xFF74827D),
+                          fontSize: 8,
+                          fontWeight: FontWeight.w700,
+                          letterSpacing: 1.1,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              )
+            : Text(_appBarTitles[_selectedIndex]),
         actions: [
           // 🔥 CLAIMS BUTTON - This is what you were missing!
           Stack(
@@ -342,9 +390,9 @@ class _HomeScreenState extends State<HomeScreen> {
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
         type: BottomNavigationBarType.fixed,
-        selectedItemColor: Colors.blue,
-        unselectedItemColor: Colors.grey,
-        backgroundColor: Colors.white,
+        selectedItemColor: const Color(0xFF176B57),
+        unselectedItemColor: const Color(0xFF89948F),
+        backgroundColor: const Color(0xFFFDFEFC),
         elevation: 8,
         items: const [
           BottomNavigationBarItem(

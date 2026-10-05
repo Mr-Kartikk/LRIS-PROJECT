@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => ClaimProvider()),
       ],
       child: MaterialApp(
-        title: 'Lost & Found',
+        title: 'LIRS',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           primarySwatch: Colors.blue,
