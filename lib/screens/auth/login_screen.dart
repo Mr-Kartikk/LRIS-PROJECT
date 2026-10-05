@@ -69,19 +69,47 @@ class _LoginScreenState extends State<LoginScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: 40),
+                SizedBox(height: 32),
                 Center(
-                  child: Container(
-                    width: 100,
-                    height: 100,
-                    decoration: BoxDecoration(
-                      color: Colors.blue[50],
-                      shape: BoxShape.circle,
-                    ),
-                    child: Icon(Icons.inventory, size: 60, color: Colors.blue),
+                  child: Column(
+                    children: [
+                      Container(
+                        width: 92,
+                        height: 92,
+                        decoration: BoxDecoration(
+                          color: Color(0xFFE4F3EC),
+                          shape: BoxShape.circle,
+                        ),
+                        child: Icon(
+                          Icons.inventory_2_rounded,
+                          size: 52,
+                          color: Color(0xFF176B57),
+                        ),
+                      ),
+                      SizedBox(height: 12),
+                      Text(
+                        'LIRS',
+                        style: TextStyle(
+                          color: Color(0xFF193C36),
+                          fontSize: 22,
+                          fontWeight: FontWeight.w800,
+                          letterSpacing: 3,
+                        ),
+                      ),
+                      SizedBox(height: 3),
+                      Text(
+                        'LOST & FOUND',
+                        style: TextStyle(
+                          color: Color(0xFF74827D),
+                          fontSize: 10,
+                          fontWeight: FontWeight.w700,
+                          letterSpacing: 1.6,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-                SizedBox(height: 30),
+                SizedBox(height: 26),
                 Text(
                   'Welcome Back',
                   style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
