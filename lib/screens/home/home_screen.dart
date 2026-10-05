@@ -43,9 +43,12 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    _loadNotificationCount();
-    _loadClaimCount();
-    _fetchInitialData();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
+      _loadNotificationCount();
+      _loadClaimCount();
+      _fetchInitialData();
+    });
   }
 
   Future<void> _loadNotificationCount() async {

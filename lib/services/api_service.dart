@@ -6,15 +6,10 @@ import 'package:http_parser/http_parser.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ApiService {
-  // static String get baseUrl {
-  //static const String baseUrl = 'http://192.168.1.12:8000/api';
-  static const String baseUrl = 'http://127.0.0.1:8000/api';
-
-  //   if (Platform.isAndroid) {
-  //     return 'http://10.0.2.2:8000/api';
-  //   }
-  //   return 'http://localhost:8000/api';
-  // }
+  static const String baseUrl = String.fromEnvironment(
+    'API_BASE_URL',
+    defaultValue: 'http://127.0.0.1:8000/api',
+  );
 
   Future<Map<String, String>> getHeaders() async {
     final prefs = await SharedPreferences.getInstance();
