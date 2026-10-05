@@ -1,18 +1,29 @@
 import os
 from pathlib import Path
 from datetime import timedelta
+from django.core.exceptions import ImproperlyConfigured
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-your-secret-key-change-this-in-production'
-DEBUG = True
+DEBUG = os.environ.get('DJANGO_DEBUG', '1').lower() in {'1', 'true', 'yes', 'on'}
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
+if not SECRET_KEY:
+    if not DEBUG:
+        raise ImproperlyConfigured('Set DJANGO_SECRET_KEY when DEBUG is disabled.')
+    SECRET_KEY = 'django-insecure-your-secret-key-change-this-in-production'
 
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
     '192.168.1.12',
-    '*',
 ]
+ALLOWED_HOSTS.extend(
+    host.strip()
+    for host in os.environ.get('DJANGO_ALLOWED_HOSTS', '').split(',')
+    if host.strip()
+)
+if DEBUG:
+    ALLOWED_HOSTS.append('*')
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -63,25 +74,22 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'lostfound.wsgi.application'
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'lostfound_db',
-        'USER': 'lostfound_user',
-        'PASSWORD': 'lost&found',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
-}
-
-# Local development fallback: when DEBUG is True and the environment
-# variable USE_SQLITE is not set to '0', use a local SQLite database so
-# developers can run migrations and the dev server without Postgres.
-if DEBUG and os.environ.get('USE_SQLITE', '1') != '0':
+if os.environ.get('USE_SQLITE', '1').lower() not in {'0', 'false', 'no'}:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+            'NAME': os.environ.get('SQLITE_DATABASE', os.path.join(BASE_DIR, 'db.sqlite3')),
+        }
+    }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': os.environ.get('POSTGRES_DB', 'lostfound_db'),
+            'USER': os.environ.get('POSTGRES_USER', 'lostfound_user'),
+            'PASSWORD': os.environ.get('POSTGRES_PASSWORD', ''),
+            'HOST': os.environ.get('POSTGRES_HOST', 'localhost'),
+            'PORT': os.environ.get('POSTGRES_PORT', '5432'),
         }
     }
 
@@ -98,7 +106,7 @@ USE_I18N = True
 USE_TZ = True
 
 # Static files
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Media files - defined ONCE
@@ -108,7 +116,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # CORS Settings
-CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_ALL_ORIGINS = DEBUG
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:8000",
     "http://127.0.0.1:8000",
@@ -116,6 +124,16 @@ CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:3000",
     "http://localhost:5000",
     "http://127.0.0.1:5000",
+]
+CORS_ALLOWED_ORIGINS.extend(
+    origin.strip()
+    for origin in os.environ.get('CORS_ALLOWED_ORIGINS', '').split(',')
+    if origin.strip()
+)
+CSRF_TRUSTED_ORIGINS = [
+    origin.strip()
+    for origin in os.environ.get('CSRF_TRUSTED_ORIGINS', '').split(',')
+    if origin.strip()
 ]
 
 CORS_ALLOWED_ORIGIN_REGEXES = [

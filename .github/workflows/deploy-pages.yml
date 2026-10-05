@@ -36,7 +36,14 @@ jobs:
         run: flutter pub get
 
       - name: Build Flutter web app
-        run: flutter build web --release --base-href "/LRIS-PROJECT/"
+        env:
+          API_BASE_URL: ${{ vars.API_BASE_URL }}
+        run: |
+          if [ -n "$API_BASE_URL" ]; then
+            flutter build web --release --base-href "/LRIS-PROJECT/" --dart-define=API_BASE_URL="$API_BASE_URL"
+          else
+            flutter build web --release --base-href "/LRIS-PROJECT/"
+          fi
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
